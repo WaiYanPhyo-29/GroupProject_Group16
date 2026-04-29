@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations - Carbon Footprint Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">🌿 Carbon Footprint Tracker</div>
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/add_activity">Add Activity</a>
+        <a href="/summary">Summary</a>
+        <a href="/recommendations">Recommendations</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 style="color:#1b4332;margin-bottom:8px;">Emission Reduction Recommendations</h1>
+    <p style="color:#6c757d;margin-bottom:24px;">
+        Personalised suggestions based on your household activity patterns
+    </p>
+
+    {% if recommendations %}
+    <div class="reco-grid">
+        {% for reco in recommendations %}
+        <div class="reco-card">
+            <h3>⚠️ {{ reco['CategoryName'] }}</h3>
+            <p>{{ reco['Message'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card">
+        <div style="text-align:center;padding:40px;">
+            <div style="font-size:48px;margin-bottom:16px;">🌿</div>
+            <h2 style="color:#1b4332;margin-bottom:8px;">Great job!</h2>
+            <p style="color:#6c757d;">
+                Your emissions are within acceptable limits. 
+                Keep up the good work and continue tracking your activities!
+            </p>
+            <br>
+            <a href="/add_activity" class="btn btn-green">➕ Add Activity</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <br>
+    <a href="/dashboard" class="btn btn-outline">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

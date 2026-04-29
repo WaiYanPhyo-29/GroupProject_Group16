@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Carbon Footprint Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">🌿 Carbon Footprint Tracker</div>
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/add_activity">Add Activity</a>
+        <a href="/summary">Summary</a>
+        <a href="/recommendations">Recommendations</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 style="color:#1b4332;margin-bottom:8px;">Welcome, {{ username }}! 👋</h1>
+    <p style="color:#6c757d;margin-bottom:24px;">Here is your household carbon footprint overview</p>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total Emissions</div>
+            <div class="stat-value">{{ total_emissions }}</div>
+            <div class="stat-unit">kg CO₂e</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">⚡ Electricity</div>
+            <div class="stat-value">{{ totals['Electricity']|round(2) }}</div>
+            <div class="stat-unit">kg CO₂e</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🔥 Natural Gas</div>
+            <div class="stat-value">{{ totals['Natural Gas']|round(2) }}</div>
+            <div class="stat-unit">kg CO₂e</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🚗 Transport</div>
+            <div class="stat-value">{{ totals['Transport']|round(2) }}</div>
+            <div class="stat-unit">kg CO₂e</div>
+        </div>
+    </div>
+
+    <!-- Warning -->
+    {% if total_emissions > 200 %}
+    <div class="warning">
+        ⚠️ Your total emissions are above the UK average of 200 kg CO₂e per month. 
+        Check your recommendations to reduce your carbon footprint!
+    </div>
+    {% endif %}
+
+    <!-- Quick Actions -->
+    <div class="card">
+        <h2>Quick Actions</h2>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="/add_activity" class="btn btn-green">➕ Add Activity</a>
+            <a href="/summary" class="btn btn-outline">📊 View Summary</a>
+            <a href="/recommendations" class="btn btn-outline">🌿 Recommendations</a>
+        </div>
+    </div>
+
+    <!-- Emission Factors Info -->
+    <div class="card">
+        <h2>📋 DESNZ/DEFRA 2025 Emission Factors</h2>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Emission Factor</th>
+                <th>Unit</th>
+            </tr>
+            <tr>
+                <td>⚡ Electricity</td>
+                <td>0.2307</td>
+                <td>kg CO₂e per kWh</td>
+            </tr>
+            <tr>
+                <td>🔥 Natural Gas</td>
+                <td>0.1882</td>
+                <td>kg CO₂e per kWh</td>
+            </tr>
+            <tr>
+                <td>🚗 Transport</td>
+                <td>0.1704</td>
+                <td>kg CO₂e per mile</td>
+            </tr>
+            <tr>
+                <td>💧 Water</td>
+                <td>0.149</td>
+                <td>kg CO₂e per m³</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

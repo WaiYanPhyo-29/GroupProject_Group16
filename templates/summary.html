@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary - Carbon Footprint Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">🌿 Carbon Footprint Tracker</div>
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/add_activity">Add Activity</a>
+        <a href="/summary">Summary</a>
+        <a href="/recommendations">Recommendations</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 style="color:#1b4332;margin-bottom:8px;">Emissions Summary</h1>
+    <p style="color:#6c757d;margin-bottom:24px;">Detailed breakdown of your household carbon footprint</p>
+
+    <div class="card">
+        <h2>📋 Activity Records</h2>
+        {% if activities %}
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Emissions (kg CO₂e)</th>
+            </tr>
+            {% for activity in activities %}
+            <tr>
+                <td>{{ activity['Date'] }}</td>
+                <td>{{ activity['CategoryName'] }}</td>
+                <td>{{ activity['Amount'] }}</td>
+                <td>{{ "%.2f"|format(activity['Emissions']) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p style="color:#6c757d;text-align:center;padding:20px;">
+            No activities recorded yet. 
+            <a href="/add_activity" style="color:#2d6a4f;font-weight:700;">Add your first activity!</a>
+        </p>
+        {% endif %}
+    </div>
+
+    <div style="display:flex;gap:12px;">
+        <a href="/add_activity" class="btn btn-green">➕ Add Activity</a>
+        <a href="/dashboard" class="btn btn-outline">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
