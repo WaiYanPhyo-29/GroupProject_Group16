@@ -11,8 +11,8 @@ Python 3
 3. Open the extracted folder in VS Code
 4. Open terminal
 5. Ensure that you navigate to the app folder(depends on your pc's folder placement)
-6. :cd GroupProject_Group16-main
-7. :python app.py
+6. cd GroupProject_Group16-main
+7. python app.py
 8. Open browser: http://127.0.0.1:5000
 
 The databse will be created automatically when it has been run.
