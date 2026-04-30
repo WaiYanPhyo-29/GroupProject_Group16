@@ -5,14 +5,16 @@ import os
 app = Flask(__name__)
 app.secret_key = 'carbontracker2026'
 
-# Database path
+#Database pathway
 DB_PATH = 'carbon.db'
 
+# connecting to the database
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
+# setting up all the tables when app run first
 def init_db():
     conn = get_db()
     conn.executescript('''
@@ -116,8 +118,8 @@ def register():
 
 @app.route('/dashboard')
 def dashboard():
- # Calculation of total emissions per category
- # Warning shown if total exceeds UK average of 200kg CO2e
+ # checking if the user is logged in firstly
+
     if 'user_id' not in session:
         return redirect(url_for('login'))
     conn = get_db()
@@ -205,6 +207,7 @@ def recommendations():
     ''', (session['user_id'],)).fetchall()
 
     recos = []
+# looping and checking for each category so that it can find if the emissions are already above the limit
     for a in activities:
         reco = conn.execute('''
             SELECT r.Message, c.CategoryName
