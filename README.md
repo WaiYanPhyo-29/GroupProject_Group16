@@ -6,3 +6,9 @@ Smart Household Carbon Footprint Tracker
 2. Install Flask: pip install flask
 3. Run: python app.py
 4. Open browser: http://127.0.0.1:5000
+
+## Technologies Used
+- Python Flask (Backend)
+- HTML/CSS (Frontend)
+- SQLite (Database)
+- DESNZ/DEFRA 2025 Emission Factors
