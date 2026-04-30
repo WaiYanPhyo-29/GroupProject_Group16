@@ -19,3 +19,10 @@ Smart Household Carbon Footprint Tracker
 - HTML/CSS (Frontend)
 - SQLite (Database)
 - DESNZ/DEFRA 2025 Emission Factors
+- 
+## Database Tables
+- User - stores login credentials
+- Household - stores household details
+- Activity - stores recorded activities
+- Category - stores emission categories
+- Recommendation - stores emission tips
