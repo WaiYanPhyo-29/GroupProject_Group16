@@ -116,6 +116,8 @@ def register():
 
 @app.route('/dashboard')
 def dashboard():
+ # Calculation of total emissions per category
+ # Warning shown if total exceeds UK average of 200kg CO2e
     if 'user_id' not in session:
         return redirect(url_for('login'))
     conn = get_db()
