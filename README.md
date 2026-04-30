@@ -10,19 +10,19 @@ Python 3
 2. Extract it
 3. Open the extracted folder in VS Code
 4. Open terminal
-5. make sure you navigate to the app folder(depends on your folder placement)
-6. :cd SmartHouseholdCarbonFootprintTracker
+5. Ensure that you navigate to the app folder(depends on your pc's folder placement)
+6. :cd GroupProject_Group16-main
 7. :python app.py
 8. Open browser: http://127.0.0.1:5000
 
-The databse will be created automatically when it run
+The databse will be created automatically when it has been run.
 
 # Features
 User registration and login
-Record electricity, gas, transport and water usage
-Automatic carbon footprint calculation using DESNZ/DEFRA 2025 factors
-Dashboard showing emissions summary
-Personalised recommendations to reduce emissions
+Record electricity, gas, transport and water usage.
+Automatic carbon footprint calculation using DESNZ/DEFRA 2025 factors.
+Dashboard showing emissions summary.
+Personalised recommendations to reduce emissions.
   
 # Technology Used
 Python Flask for Backend
