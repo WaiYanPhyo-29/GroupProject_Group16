@@ -38,7 +38,7 @@
                 <td>{{ activity['Date'] }}</td>
                 <td>{{ activity['CategoryName'] }}</td>
                 <td>{{ activity['Amount'] }}</td>
-                <td>{{ "%.2f"|format(activity['Emissions']) }}</td>
+                <td>{{ activity['Emissions']|round(2) }}</td>
             </tr>
             {% endfor %}
         </table>
